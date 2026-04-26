@@ -1,6 +1,7 @@
 import pygame
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from logger import log_state
+from player import Player
 
 def main():
     # Iniciando o pygame
@@ -9,6 +10,11 @@ def main():
     # Variáveis criadas para a limitação do FPS
     clock = pygame.time.Clock()
     dt = 0
+
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+
+    player = Player(x, y)
 
     # Variável criada para configurar a tela do jogo
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -26,6 +32,9 @@ def main():
 
         # A tela é preenchida com a cor preta
         screen.fill("black")
+
+        player.draw(screen)
+
         pygame.display.flip()
 
         # Chamando o método que limita o FPS para 60
