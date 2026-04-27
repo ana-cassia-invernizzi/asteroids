@@ -14,6 +14,11 @@ def main():
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
     player = Player(x, y)
 
     # Variável criada para configurar a tela do jogo
@@ -33,8 +38,10 @@ def main():
         # A tela é preenchida com a cor preta
         screen.fill("black")
 
-        player.draw(screen)
-        player.update(dt)
+        updatable.update(dt)
+        for obj in drawable:
+            obj.draw(screen)
+
         pygame.display.flip()
 
         # Chamando o método que limita o FPS para 60
