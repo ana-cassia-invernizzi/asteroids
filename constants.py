@@ -1,5 +1,5 @@
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 1024
 PLAYER_RADIUS = 20
 LINE_WIDTH = 2
 PLAYER_TURN_SPEED = 300
@@ -11,3 +11,10 @@ ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
 SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
 PLAYER_SHOOT_COOLDOWN_SECONDS = 0.3
+
+CONTROLS = [
+    "W / Seta Cima - Mover para Frente",
+    "A / Seta Esquerda - Rotacionar Esquerda",
+    "D / Seta Direita - Rotacionar Direita",
+    "Espaço - Atirar"
+]
