@@ -1,0 +1,35 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Instalar dependências
+        run: uv sync
+
+      - name: Instalar PyInstaller
+        run: uv add pyinstaller
+
+      - name: Gerar o executável
+        run: uv run pyinstaller --onefile --noconsole --name asteroids main.py
+
+      - name: Copiar assets para dist
+        run: Copy-Item -Recurse asset dist/asset
+
+      - name: Publicar build como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: asteroids-windows
+          path: dist/
